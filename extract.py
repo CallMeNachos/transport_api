@@ -12,7 +12,7 @@ class Extract:
 	def __init__(self, url: str):
 		self.url = url
 
-	def get_resquest(self, page) -> dict:
+	def get_resquest(self, page: str) -> dict:
 		url_page = self.url + page
 		try:
 			response = requests.get(url_page).json()
@@ -31,7 +31,7 @@ class Extract:
 			print(response)
 			yield response
 
-	def create_dataframe(self):
+	def create_dataframe(self) -> pd.DataFrame:
 		df = pd.DataFrame()
 		for record in self.fetch_record():
 			for id, r in record.items():
